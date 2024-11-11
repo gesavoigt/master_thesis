@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Created on Mon Oct 19 20:03:01 2020
+# Modified to return z-score by gesavoigt
 # @author: Ajit Johnson Nirmal
 
 """
@@ -225,10 +226,14 @@ Example:
         
         # DataFrame with the neighbour frequency and P values
         count = (k_max.values * direction).values # adding directionallity to interaction
-        neighbours = pd.DataFrame({'count': count,'p_val': p_values}, index = k_max.index)
-        #neighbours.loc[neighbours[neighbours['p_val'] > p_val].index,'count'] = np.NaN
-        #del neighbours['p_val']
-        neighbours.columns = [adata_subset.obs[imageid].unique()[0], 'pvalue_' + str(adata_subset.obs[imageid].unique()[0])]
+        if pval_method == 'abs':
+            neighbours = pd.DataFrame({'count': count,'p_val': p_values}, index = k_max.index)
+            #neighbours.loc[neighbours[neighbours['p_val'] > p_val].index,'count'] = np.NaN
+            #del neighbours['p_val']
+            neighbours.columns = [adata_subset.obs[imageid].unique()[0], 'pvalue_' + str(adata_subset.obs[imageid].unique()[0])]
+        if pval_method == 'zscore':
+            neighbours = pd.DataFrame({'count': count,'z_score': z_scores.values, 'p_val': p_values}, index = k_max.index)
+            neighbours.columns = [adata_subset.obs[imageid].unique()[0], 'zscore_' + str(adata_subset.obs[imageid].unique()[0]), 'pvalue_' + str(adata_subset.obs[imageid].unique()[0])]
         neighbours = neighbours.reset_index()
         #neighbours = neighbours['count'].unstack()
         
