@@ -40,8 +40,8 @@ str(fsom) ## Inspect
 set.seed(42)
 # Build self-organizing map
 fsom <- BuildSOM(fsom,
-                 xdim=5,
-                 ydim=5)
+                 xdim=7,
+                 ydim=7)
 str(fsom$map) ## Inspect
 # Build minimal spanning tree
 fsom <- BuildMST(fsom)
@@ -57,7 +57,7 @@ PlotMarker(fsom, "CD45") ## Plasma Cells
 PlotNumbers(fsom) ## node indices
 
 # Meta-clustering to help inform group assignments
-metaClustering <- as.character(metaClustering_consensus(fsom$map$codes, k=5))
+metaClustering <- as.character(metaClustering_consensus(fsom$map$codes, k=8))
 PlotPies(fsom,
          cellTypes=ann$phenograph, ## pie fill
          backgroundValues=metaClustering) ## pie background shade
@@ -69,8 +69,7 @@ group1 <- c(2,10,9,1,18,17)
 group2 <- c(64,56,63,55,47,48,39,40)
 group3 <- c(32,31,23,22,24,15,16,7,8,14,6,13,5,12,4,11,3,19,21,20)
 # for plasma cells
-group1 <- c(45,46,39,47,40,41,48,42,49)
-group2 <- c(38,36,44,37,43)
+group1 <- c(47,48,49,41,42,35,34)
 
 # Recode node labels (for plotting)
 n_nodes <- max(fsom$map$mapping[,1])
