@@ -1,0 +1,3 @@
+[submodule "scripts/submodules/cellcharter_3D"]
+	path = scripts/submodules/cellcharter_3D
+	url = https://github.com/gesavoigt/cellcharter_3D
