@@ -5,3 +5,6 @@
 	path = scripts/submodules/directionalSEA/scimap
 	url = https://github.com/chiarasch/scimap
 	branch = delaunay_nbh
+[submodule "scripts/submodules/alphashape_3d"]
+	path = scripts/submodules/alphashape_3d
+	url = https://github.com/gesavoigt/alphashape_3d
