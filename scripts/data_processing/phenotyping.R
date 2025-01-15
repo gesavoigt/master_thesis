@@ -1,5 +1,4 @@
 ## Imports
-library(renv)
 #renv::install("bioc::FlowSOM", lock=TRUE)
 library(dplyr)
 library(Biobase)

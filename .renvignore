@@ -1,6 +1,8 @@
-data/
-scripts/data_processing/*.ipynb
-scripts/nbh_analysis/*.ipynb
+^data/
+requirements/
+\.ipynb$
+^scripts/submodules/
+\.(zip|tar\.gz|exe|dll|so|pyc|o|bin)$
 
 # VScode files
 ## Ignore Visual Studio temporary files, build results, and
